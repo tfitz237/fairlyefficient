@@ -1,0 +1,23 @@
+                <md-list>
+                    <md-item ng-repeat = "post in vm.posts | orderBy:'-created_on'" class="repeated-item">
+                        <md-item-content layout="column" layout-align="start start" class="md-whiteframe-z1">
+                            <div class="md-card-image2">
+                                <img ng-src="{{post.image}}" class="card_image" alt="">
+                            </div>
+                            <div class="md-tile-content item_list" class="item_menuBelow">
+                                <h3>{{post.title}}</h3>
+                                <h4>{{post.created_on}}</h4>
+                                <p>
+                                    {{post.content}}
+                                </p>
+                            </div>
+                            <div layout-align="end center" layout="row">
+                                <div>
+                                <md-button class="menu_button" ng-click="vm.openPostsEditMenu(post)">
+                                    <ng-md-icon icon="more_vert" style="fill:grey" aria-label="more..."></ng-md-icon>
+                                </md-button>
+                                </div>    
+                            </div>
+                        </md-item-content>
+                    </md-item>
+                </md-list>

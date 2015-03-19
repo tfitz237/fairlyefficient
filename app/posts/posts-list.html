@@ -1,0 +1,33 @@
+<md-list layout="row" layout-wrap>
+ <md-item ng-repeat = "post in vm.posts | orderBy:'-created_on'" class="repeated-item" flex-gt-sm="50" flex-gt-md="50" flex-gt-lg="33" flex-sm="100">
+  <md-item-content layout-gt-sm="column" layout-sm="row" layout-align="start start" ng-class="vm.smallScreen ? '' : 'md-whiteframe-z1 post-item'">
+   
+   <!--<md-button ui-sref="post({id: post.id})" md-no-ink flex="90">-->
+  <div ng-class="vm.smallScreen ? 'md-tile-left': 'md-card-image'" ui-sref="post({id:post.id})">
+     <img ng-src="{{post.image}}" ng-class="vm.smallScreen ? 'item_image' : 'card_image'" alt="">
+   </div>
+   <div class="md-tile-content item_list" ng-class="{'item_menuBelow post-item-h' : vm.smallScreen == false}">
+   <md-button md-no-ink ui-sref="post({id: post.id})" class="normal_button">
+    <h3>{{post.title}}</h3>
+    <h4>{{post.created_on}}</h4>
+   
+    <p>
+     {{post.content | limitTo: 140}} <span ng-if="post.content.length > 140">...</span>
+    </p>
+    </md-button>
+    </div>
+     
+    <div layout-align="end center" layout="row">
+     <div>
+     <md-button class="menu_button" ng-click="vm.openPostsEditMenu(post)"><ng-md-icon icon="more_vert" style="fill:grey" aria-label="more..."></ng-md-icon></md-button>
+     </div>    
+    </div>
+   
+  </md-item-content>
+  
+  <md-divider ng-show="vm.smallScreen"></md-divider>
+ </md-item>
+ 
+ 
+</md-list>
+  

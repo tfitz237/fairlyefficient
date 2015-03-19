@@ -1,0 +1,8 @@
+RewriteEngine on
+#if a match for asset is found, do nothing
+RewriteRule ^bower_components/ - [L]
+RewriteCond %{THE_REQUEST} app/
+RewriteRule ^app/(.*) http://fairlyefficient.net/$1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} !app/
+RewriteRule ^(.*)$ app/$1 [L]

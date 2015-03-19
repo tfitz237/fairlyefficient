@@ -1,0 +1,19 @@
+<md-bottom-sheet class="md-list md-has-header bttmSheet">
+  <md-subheader>Post Menu</md-subheader>
+  <md-list>
+     <md-item ng-repeat="item in vmb.menu" class="btmSht-list-item">
+        <md-button ng-click="vmb.submit($index)">
+        <md-item-content>
+          
+          <div class="md-tile-left">
+              <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+          </div>
+          <div class="md-tile-content">
+            {{item.name}}
+          </div>
+         
+        </md-item-content>
+         </md-button>
+      </md-item>
+  </md-list>
+</md-bottom-sheet>

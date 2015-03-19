@@ -1,0 +1,30 @@
+
+<md-bottom-sheet>
+     <md-subheader>Add Entry</md-subheader>
+     <div layout="row" flex>
+          <div flex>
+         <md-input-container>
+             <label>Title</label>
+             <input ng-model="vmb.post.title">
+         </md-input-container>
+         <md-input-container>
+             <label>Entry</label>
+               <textarea ng-model="vmb.post.content" class="bttmSheet"></textarea>
+        </md-input-container>
+        <md-input-container>
+             <label>Image</label>
+             <input ng-model="vmb.post.image">
+        </md-input-container>
+         
+         
+         </div>
+         <div style="width:150px" layout="column" layout-align="end center">
+              <div>
+                   <img ng-src={{vmb.post.image}} class="addBlogEntryImage">
+              </div>
+              <div>
+              <md-button class="md-primary big-button" ng-click="vmb.submit()"><h2>Submit</h2></md-button>
+              </div>
+         </div>
+     </div>
+</md-bottom-sheet>
