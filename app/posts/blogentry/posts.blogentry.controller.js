@@ -2,7 +2,7 @@
      'use strict';
      
      angular
-          .module('feBlog')
+          .module('app.posts')
           .controller('BlogEntryCtrl', BlogEntryCtrl);
           BlogEntryCtrl.$inject = ['BlogEntryService', '$mdBottomSheet'];
           

@@ -2,7 +2,7 @@
      'use strict';
 
 angular
-      .module('feBlog')
+      .module('app')
       .config(configRouting);
       configRouting.$inject = ['$stateProvider', '$urlRouterProvider'];
 
@@ -13,20 +13,20 @@ function configRouting ($stateProvider, $urlRouterProvider) {
     .state('posts', {
       url: "/post",
       views: {
-        "": { templateUrl: "layout/template.html", controller:"LayoutTemplateCtrl", controllerAs: "vm"},
-        "content@posts": { templateUrl: "posts/posts-list.html", controller:"PostsCtrl", controllerAs: "vm" },
-        "sidenav@posts": { templateUrl: "layout/sidenav.html", controller:"LayoutSideNavCtrl", controllerAs: "vm" },
-        "header@posts": { templateUrl: "layout/header.html", controller:"LayoutHeaderCtrl", controllerAs: "vm" }
+        "": { templateUrl: "layout/layout.template.html", controller:"LayoutTemplateCtrl", controllerAs: "vm"},
+        "content@posts": { templateUrl: "posts/posts.list.html", controller:"PostsCtrl", controllerAs: "vm" },
+        "sidenav@posts": { templateUrl: "layout/layout.sidenav.html", controller:"LayoutSideNavCtrl", controllerAs: "vm" },
+        "header@posts": { templateUrl: "layout/layout.header.html", controller:"LayoutHeaderCtrl", controllerAs: "vm" }
       }
     })
     
     .state('post', {
       url: "/post/:id",
       views: {
-        "": {templateUrl: "layout/template.html", controller:"LayoutTemplateCtrl", controllerAs: "vm" },
-        "content@post": { templateUrl: "posts/post-details.html", controller:"PostsCtrl", controllerAs: "vm" },
-        "sidenav@post": { templateUrl: "layout/sidenav.html", controller:"LayoutSideNavCtrl",controllerAs: "vm" },
-        "header@post": { templateUrl: "layout/header.html",controller:"LayoutHeaderCtrl", controllerAs: "vm" }
+        "": {templateUrl: "layout/layout.template.html", controller:"LayoutTemplateCtrl", controllerAs: "vm" },
+        "content@post": { templateUrl: "posts/posts.details.html", controller:"PostsCtrl", controllerAs: "vm" },
+        "sidenav@post": { templateUrl: "layout/layout.sidenav.html", controller:"LayoutSideNavCtrl",controllerAs: "vm" },
+        "header@post": { templateUrl: "layout/layout.header.html",controller:"LayoutHeaderCtrl", controllerAs: "vm" }
       }
     });
     

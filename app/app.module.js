@@ -2,7 +2,7 @@
     'use strict';
     
     angular
-          .module('feBlog', ['ngMaterial' , 'ui.router','ngMdIcons', 'ngResource']);
+          .module('app', ['app.core','app.layout','app.posts']);
 })();
 
 

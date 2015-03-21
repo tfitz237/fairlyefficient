@@ -2,7 +2,7 @@
      'use strict';
      
      angular
-          .module('feBlog')
+          .module('app.posts')
           .factory('BlogEntryService', BlogEntryService);
           BlogEntryService.$inject = ['Posts', '$mdBottomSheet'];
           function BlogEntryService(Posts, $mdBottomSheet) {

@@ -1,16 +1,14 @@
 (function() {
      'use strict';
-angular
-       .module('feBlog')
-       .config(feBlogTheme);
+     angular
+          .module('app')
+          .config(feBlogTheme);
        
-       
-       
-function feBlogTheme($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
+     function feBlogTheme($mdThemingProvider) {
+          $mdThemingProvider
+                    .theme('default')
                     .primaryPalette('deep-orange')
                     .accentPalette('grey')
                     .backgroundPalette('grey');
-}
-
+     }
 })();
