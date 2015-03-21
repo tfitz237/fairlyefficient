@@ -1,0 +1,11 @@
+    <section layout="row" flex>
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" ui-view="sidenav" md-is-locked-open="$mdMedia('gt-md')">
+        </md-sidenav>
+        <div layout="column" flex>
+            <md-toolbar layout="row" ui-view="header">
+            </md-toolbar>
+            <md-content ng-class="$mdMedia('gt-sm') ? 'md-padding' : ''" md-swipe-right="vm.toggleSidenav('left')" layout="column" flex id="content" ui-view="content">
+            </md-content>
+        </div>
+  <md-button class="md-fab md-fab-bottom-right md-primary" aria-label="Add" ng-click="vm.openBlogEntry('new')"><ng-md-icon icon="add" style="fill: white;"></ng-md-icon></md-button>
+   </section>

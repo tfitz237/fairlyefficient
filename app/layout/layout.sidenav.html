@@ -1,0 +1,22 @@
+ 
+ <md-toolbar>
+      <h2 class="md-toolbar-tools">
+        Menu
+      </h2>
+    </md-toolbar>
+  <md-list>
+      <md-item ng-repeat="item in vm.menu">
+        <md-button ui-sref="{{item.state}}" ng-click="vm.toggleSidenav('left')">
+        <md-item-content>
+          
+          <div class="md-tile-left">
+              <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+          </div>
+          <div class="md-tile-content">
+            {{item.name}}
+          </div>
+         
+        </md-item-content>
+         </md-button>
+      </md-item>
+    </md-list
