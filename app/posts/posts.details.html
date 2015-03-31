@@ -5,13 +5,13 @@
                                 <img ng-src="{{post.image}}" class="card_image" alt="">
                             </div>
                             <div class="md-tile-content item_list" class="item_menuBelow">
-                                <h3>{{post.title}}</h3>
-                                <h4>{{post.created_on}}</h4>
-                                <p>
-                                    {{post.content}}
-                                </p>
+                                <h2>{{post.title}}</h2>
+                                <div ng-bind-html="post.content | markdown" class="content">
+                                </div>
+                                <span layout="row"><h4 flex>{{post.created_on | date:'short'}}</h4><h4 flex><md-button ui-sref="user.profile({id: post.posted_by})" class="normal_button">{{post.posted_by_username}}</md-button></h4></span>
+                           
                             </div>
-                            <div layout-align="end center" layout="row">
+                             <div layout-align="end center" layout="row">
                                 <div>
                                 <md-button class="menu_button" ng-click="vm.openPostsEditMenu(post)">
                                     <ng-md-icon icon="more_vert" style="fill:grey" aria-label="more..."></ng-md-icon>
@@ -21,3 +21,4 @@
                         </md-item-content>
                     </md-item>
                 </md-list>
+                

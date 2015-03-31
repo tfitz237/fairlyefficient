@@ -11,7 +11,7 @@
               {
                   
                   'get': {method: 'GET', url: 'http://api.fairlyefficient.net/menu/:id', params: {id: '@id'}},
-                  'save': {method: 'POST', url: 'http://api.fairlyefficient.net/menu', params: {icon: '@icon', name: '@name', state: '@state', alt: '@alt'}},
+                  'save': {method: 'POST', url: 'http://api.fairlyefficient.net/menu'},
                   'getMenu': {method: 'GET', url: 'http://api.fairlyefficient.net/menu/', isArray:true},
                   'delete': {method: 'DELETE', url: 'http://api.fairlyefficient.net/menu/:id', params: {id: '@id'}},
                   'update': {method: 'PUT', url: 'http://api.fairlyefficient.net/menu/:id', params: {id: '@id'}}

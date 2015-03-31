@@ -1,0 +1,25 @@
+
+                <md-list>
+                    <md-item class="repeated-item">
+                        <md-item-content layout="column" layout-align="start start" class="md-whiteframe-z1">
+                             <h3 style="padding-left:10px">{{vm.users.name}}</h3>
+                            <div class="md-card-image2">
+                                <img ng-src="{{vm.users.image}}" class="card_image" alt="">
+                            </div>
+                            <div class="md-tile-content item_list" class="item_menuBelow">
+                              
+                                <h4>Joined: {{vm.users.created_on}}</h4>
+                                <p>
+                                    {{vm.users.profile}}
+                                </p>
+                            </div>
+                            <div layout-align="end center" layout="row">
+                                <div>
+                                <md-button class="menu_button" ng-click="vm.openPostsEditMenu(post)">
+                                    <ng-md-icon icon="more_vert" style="fill:grey" aria-label="more..."></ng-md-icon>
+                                </md-button>
+                                </div>    
+                            </div>
+                        </md-item-content>
+                    </md-item>
+                </md-list>

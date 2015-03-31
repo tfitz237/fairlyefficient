@@ -1,0 +1,82 @@
+
+  <md-grid-list ng-if="!vm.smallScreen" 
+ md-cols="2" md-cols-gt-lg="3" md-row-height-gt-lg="220px" md-gutter="10px" md-row-height="200px" 
+     >
+   
+
+ <md-grid-tile ng-repeat = "post in vm.posts | orderBy:'-created_on'" class="repeated-item post-grid-item" md-rowspan="{{(post.image == '' || post.image == null) ? '1' : '2'}}">
+
+  
+  
+  <md-item-content layout-gt-sm="column" layout-sm="row" layout-align="center start" ng-class="vm.smallScreen ? 'list_item' : 'md-whiteframe-z1 post-item'">
+   
+   <!--<md-button ui-sref="post({id: post.id})" md-no-ink flex="90">-->
+  <div class="md-card-image" ui-sref="app.post.details({id:post.id})" ng-hide="post.image == null || post.image == ''">
+     <img ng-src="{{post.image}}" class="card_image" alt="">
+   </div>
+   <div class="md-tile-content item_list" class="item_menuBelow">
+   <md-button md-no-ink ui-sref="app.post.details({id: post.id})" class="normal_button left">
+    <h3>{{post.title}}</h3>
+    </md-button>
+   
+    <div ng-bind-html="post.content | limitTo:120 | markdown" class="content card-content">
+    
+    </div>
+     <span layout="row" class="center"><span flex class="md-button smaller-font normal_button">{{post.created_on | date : 'short'}}</span><span flex ng-if="post.content.length > 120"><md-button md-no-ink ui-sref="app.post.details({id: post.id})" class="normal_button center smaller-font" ng-if="post.content.length > 140">Read more</md-button></span>
+      </div>
+     
+    <div layout-gt-sm="row" layout-sm="column" class="item_options_row">
+     <div><md-button class="menu_button" ui-sref="^.user.profile({id: post.posted_by})"><md-tooltip>{{post.posted_by_username}}</md-tooltip><ng-md-icon icon="account_box" style="fill:black"aria-label="Posted By"></ng-md-icon></md-button></div>
+     <!-- <div><md-button class="menu_button" ng-click="vm.favoritePost(post)"><md-tooltip>Favorite</md-tooltip><ng-md-icon icon="star_outline" style="fill:grey" aria-label="favorite"></ng-md-icon></md-button></div>
+     <div><md-button class="menu_button" ng-click="vm.viewComments(post)"><md-tooltip>Comments</md-tooltip><ng-md-icon icon="comment" style="fill:grey" aria-label="comments"></ng-md-icon></md-button></div>
+     -->
+     <div><md-button class="menu_button" ng-click="vm.openPostsEditMenu(post)"><md-tooltip>More</md-tooltip><ng-md-icon icon="more_vert" style="fill:grey" aria-label="more..."></ng-md-icon></md-button></div>
+    
+    </div>
+  </md-item-content>
+ </md-grid-tile>
+ 
+ 
+</md-grid-list>
+
+<md-list layout="row" layout-wrap ng-if="vm.smallScreen">
+    <md-item ng-repeat = "post in vm.posts | orderBy:'-created_on'" class="repeated-item" flex-gt-sm="50" flex-gt-md="50" flex-gt-lg="33" flex-sm="100">
+          
+        <md-item-content layout="row" layout-align="center start" class="list_item">
+
+
+                    <div class="md-tile-left" ui-sref="app.post.details({id:post.id})" layout="row" layout-align="end center" ng-hide="(post.image == null || post.image=='')">
+                        <img ng-src="{{post.image}}" class="item_image" alt="">
+                    </div>
+                    <div class="md-tile-content item_list item_menu_right">
+                        <md-button md-no-ink ui-sref="app.post.details({id: post.id})" class="normal_button left">
+                            <h3>{{post.title}}</h3>
+                        </md-button>
+           
+                        <div ng-bind-html="post.content | limitTo:140 | markdown" class="card-content">
+            
+                        </div>
+                          <span layout="row" class="center"><span flex class="md-button smaller-font normal_button left">{{post.created_on | date:'short'}}</span><span flex ng-if="post.content.length > 140"><md-button md-no-ink ui-sref="app.post.details({id: post.id})" class="right normal_button center smaller-font" ng-if="post.content.length > 140">Read more</md-button></span></span>
+
+                   </div>
+
+                  
+
+            <div layout="column" class="item_options_col">
+                <div><md-button class="menu_button" ui-sref="app.user.profile({id: post.posted_by})"><md-tooltip>{{post.posted_by_username}}</md-tooltip><ng-md-icon icon="account_box" style="fill:orange"aria-label="Posted By"></ng-md-icon></md-button></div>
+                <!-- <div><md-button class="menu_button" ng-click="vm.favoritePost(post)"><md-tooltip>Favorite</md-tooltip><ng-md-icon icon="star_outline" style="fill:grey" aria-label="favorite"></ng-md-icon></md-button></div>
+                <div><md-button class="menu_button" ng-click="vm.viewComments(post)"><md-tooltip>Comments</md-tooltip><ng-md-icon icon="comment" style="fill:grey" aria-label="comments"></ng-md-icon></md-button></div>
+                 -->
+            <div><md-button class="menu_button" ng-click="vm.openPostsEditMenu(post)"><md-tooltip>More</md-tooltip><ng-md-icon icon="more_vert" style="fill:grey" aria-label="more..."></ng-md-icon></md-button></div>
+    
+            </div>
+   
+  </md-item-content>
+  
+
+ </md-item>
+ 
+ 
+</md-list>
+  
+  

@@ -2,7 +2,7 @@
     'use strict';
     
     angular
-          .module('app', ['app.core','app.layout','app.posts']);
+          .module('app', ['app.core','app.layout','app.posts','app.users']);
 })();
 
 

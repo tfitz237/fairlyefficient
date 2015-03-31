@@ -4,31 +4,29 @@
      angular
           .module('app.posts')
           .controller('PostsCtrl', PostsCtrl);
-     PostsCtrl.$inject = ['$scope', '$mdSidenav', '$mdMedia', 'Posts', 'BlogEntryService', 'EditMenuService'];
+     PostsCtrl.$inject = ['$scope', '$mdSidenav', '$mdMedia', 'Posts', 'BlogEntryService', 'EditMenuService','Users'];
 
-     function PostsCtrl($scope, $mdSidenav, $mdMedia, Posts, BlogEntryService, EditMenuService) {
+     function PostsCtrl($scope, $mdSidenav, $mdMedia, Posts, BlogEntryService, EditMenuService, Users) {
           var vm = this;
           // constructor
           vm.openBlogEntry = function(type){BlogEntryService.openForm(type)};
           vm.openPostsEditMenu = function(post){EditMenuService.openMenu(post)};
-          vm.refreshList = function(){Posts.getAllPosts();};
+          vm.refreshList = function(){Posts.refresh();};
           vm.toggleSidenav = toggleSidenav;
+          vm.posts = null;
           constructor();
+     
           
-          $scope.$watch(function() { return $mdMedia('sm'); }, function(e) {
+          $scope.$watch(function(){return $mdMedia('sm')}, function(e) {
                vm.smallScreen= e;
-          });
-          $scope.$watch(function() { return $mdMedia('gt-md'); }, function(e) {
-               vm.greatMedium = e;
-          });
-          $scope.$watch(function() { return Posts.getPost(); }, function(e){
-               vm.posts = e;
           });
          
          // First run
           function constructor() {
-               Posts.refresh();
-               vm.posts = Posts.getPost();
+               Posts.getPost().then(function(posts) {
+                   vm.posts = posts;
+               },function(error) { console.log(error)});
+               
                vm.greatMedium = $mdMedia('gt-md');
                vm.smallScreen = $mdMedia('sm');
           }

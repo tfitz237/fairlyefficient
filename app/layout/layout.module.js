@@ -1,8 +1,7 @@
 (function(){
      'use strict';
      
-     
      angular
-          .module('app.layout', []);
+          .module('app.layout', ['app.core','app.posts','app.users']);
      
 })();

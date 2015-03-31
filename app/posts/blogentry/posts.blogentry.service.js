@@ -4,26 +4,43 @@
      angular
           .module('app.posts')
           .factory('BlogEntryService', BlogEntryService);
-          BlogEntryService.$inject = ['Posts', '$mdBottomSheet'];
-          function BlogEntryService(Posts, $mdBottomSheet) {
-               var entry = {
+          BlogEntryService.$inject = ['Posts', '$mdBottomSheet', 'Users'];
+          function BlogEntryService(Posts, $mdBottomSheet, Users) {
+               var vmb = this;
+               vmb.entry = {
                     
                };
-               var type = 'new';
+               vmb.type = 'new';
+               vmb.me = Users.me();
                return {
                     'openForm': function(newType) {
-                              type = newType;
+                              vmb.type = newType;
                               $mdBottomSheet
                                    .show({
                                         templateUrl: 'posts/blogentry/posts.blogentry.html', 
                                         controller: "BlogEntryCtrl", 
                                         controllerAs: "vmb"
                                    })
-                                   .then(function(post) {
+                                   .then(function() {
+                                        var now = new Date().getTime();
                                         if(newType == 'new') {
-                                             Posts.api.save(entry, function(e) { return e;});
+                                             vmb.entry.created_on = now;
+                                             vmb.entry.updated_on = now;
+                                             Posts.api.save(vmb.entry, function(e) { return e;});
                                         } else {
-                                             Posts.api.update(entry, function(e) {return e;});
+
+                                             Posts.api.update({id: vmb.entry.id}, {
+                                                  title: vmb.entry.title, 
+                                                  content: vmb.entry.content, 
+                                                  image: vmb.entry.image, 
+                                                  updated_on: now})
+                                                  .$promise.then(function(data){
+                                                       console.log(data)
+                                                       
+                                                  },function(data){
+                                                       console.log(data)
+                                                       
+                                                  });
                                         }
                                         
                                    });
@@ -36,22 +53,22 @@
                     
                     
                     'getForm': function() {
-                         return entry;
+                         return vmb.entry;
                     },
                     'setForm': function(post) {
-                         entry = post;
+                         vmb.entry = post;
                     },
                     'setType': function(settype) {
                          if (settype == 'new') {
-                              type = 'new';
+                              vmb.type = 'new';
                               
                          }
                          else {
-                              type = 'edit';
+                              vmb.type = 'edit';
                          }
                     },
                     'getType': function() {
-                         return type;
+                         return vmb.type;
                     }
                     
                     };

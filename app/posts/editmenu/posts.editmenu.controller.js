@@ -5,8 +5,8 @@
         .module('app.posts')
         .controller('PostsEditMenuCtrl', PostsEditMenuCtrl );
 
-        PostsEditMenuCtrl.$inject = ['$mdBottomSheet'];
-        function PostsEditMenuCtrl($mdBottomSheet) {
+        PostsEditMenuCtrl.$inject = ['$mdDialog'];
+        function PostsEditMenuCtrl($mdDialog) {
             var vmb = this;
             vmb.menu = [
                 {name: 'Edit', icon: 'create'},
@@ -14,7 +14,7 @@
                 ];
             vmb.submit = function($index) {
               
-              $mdBottomSheet.hide(vmb.menu[$index]);
+              $mdDialog.hide(vmb.menu[$index]);
             };
             
         }

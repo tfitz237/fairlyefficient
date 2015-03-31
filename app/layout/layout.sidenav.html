@@ -1,15 +1,21 @@
  
- <md-toolbar>
-      <h2 class="md-toolbar-tools">
-        Menu
-      </h2>
+ <md-toolbar class="toolbar-sidenav md-tall">
+      <span flex></span>
+      <div class="md-toolbar-tools md-toolbar-tools-bottom user-menu" layout="row" layout-align="center center">
+           <md-select ng-model="vm.userMenu" class="user-menu-select">
+               <md-select-label class="md-flex"><span flex><ng-md-icon icon="account_circle" style="fill:white"></ng-md-icon>{{vm.userMenuLabel}}</span></md-select-label>
+               <md-option value="login" ng-hide="vm.isLoggedIn">Login</md-option>
+               <md-option value="profile" ng-show="vm.isLoggedIn">Profile</md-option>
+               <md-option value="logout" ng-show="vm.isLoggedIn">Logout</md-option>
+           </md-select>
+      </div>
     </md-toolbar>
   <md-list>
       <md-item ng-repeat="item in vm.menu">
-        <md-button ui-sref="{{item.state}}" ng-click="vm.toggleSidenav('left')">
+        <md-button ui-sref="{{item.state}}" ng-click="vm.toggleSidenav('left')" class="normal_button">
         <md-item-content>
           
-          <div class="md-tile-left">
+          <div class="md-tile-left md-tile-left-sidenav">
               <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
           </div>
           <div class="md-tile-content">

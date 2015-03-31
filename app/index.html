@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="layout/layout.style.default.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="icon" 
-      href="layout/assets/favico.ico"  type="image/x-icon">
+      href="layout/assets/favicon.ico"  type="image/x-icon">
     <title>FeBlog</title>
   </head>
   <body layout="row" ui-view>
@@ -20,20 +20,31 @@
         <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
         <script src="bower_components/angular-material/angular-material.min.js"></script>
         <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script> 
+        <script type="text/javascript" src="bower_components/angular-md5/angular-md5.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+        <script src="bower_components/showdown/compressed/showdown.min.js"></script>
+        <script src="bower_components/angular-markdown-filter/markdown.js"></script>
      
     <!-- App Modules -->    
         <script src="app.module.js"></script>
         <script src="layout/layout.module.js"></script>
         <script src="core/core.module.js"></script>
         <script src="posts/posts.module.js"></script>
-           
+        <script src="users/users.module.js"></script>
+    
     <!-- Services -->
+        <!-- Core -->
+            <script type="text/javascript" src="core/core.session.service.js"></script>
         <!-- Posts -->
             <script src="posts/posts.service.js"></script>
             <script src="posts/blogentry/posts.blogentry.service.js"></script>
             <script src="posts/editmenu/posts.editmenu.service.js"></script>   
         <!-- Layout -->
             <script src="layout/layout.sidenav.service.js"></script>
+        <!-- Users -->
+            <script src="users/users.service.js"></script>
+            <script src="users/login/users.login.service.js"></script>
+           <!-- <script src="users/users.settings.service.js"></script>-->
         
     <!-- Controllers -->
         <!-- Posts -->
@@ -41,10 +52,12 @@
             <script src="posts/editmenu/posts.editmenu.controller.js"></script>
             <script src="posts/posts.controller.js"></script> 
         <!-- Layout -->
-            <script src="layout/layout.header.controller.js"></script>
-            <script src="layout/layout.sidenav.controller.js"></script>
+            <script src="layout/layout.sidenav.directive.js"></script>
+            <script src="layout/layout.header.directive.js"></script>
             <script src="layout/layout.template.controller.js"></script>
-      
+        <!-- Users -->
+            <script src="users/users.controller.js"></script>
+            <script src="users/login/users.login.controller.js"></script>
     <!-- Config and Routes -->
         <script src="app.routes.js"></script>
         <script src="app.config.js"></script>

@@ -5,9 +5,9 @@
           .module('app.posts')
           .factory('EditMenuService', EditMenuService);
           
-     EditMenuService.$inject = ['$mdBottomSheet', 'BlogEntryService', 'Posts', '$mdDialog', '$mdToast'];
+     EditMenuService.$inject = [ 'BlogEntryService', 'Posts', '$mdDialog', '$mdToast'];
           
-     function EditMenuService($mdBottomSheet, BlogEntryService, Posts, $mdDialog, $mdToast) {
+     function EditMenuService( BlogEntryService, Posts, $mdDialog, $mdToast) {
           var vms = this; // view model service
           vms.EditButton = EditButton;
           vms.DeleteButton = DeleteButton;
@@ -30,9 +30,9 @@
                                       .cancel('Cancel');
                $mdDialog.show(confirm)
                         .then(function() {
-                              Posts.delete({id: post.id}, function(){
+                              Posts.api.delete({id: post.id}, function(){
                                    $mdToast.showSimple('Post Deleted');
-                                   BlogEntryService.refresh();
+                                   Posts.refresh();
                               });
                          });
                
@@ -41,7 +41,7 @@
                
      
           function openMenu(post) {
-                    $mdBottomSheet
+                    $mdDialog
                          .show({
                               templateUrl: 'posts/editmenu/posts.editmenu.html', 
                               controller: "PostsEditMenuCtrl", 

@@ -1,0 +1,12 @@
+<div class="md-whiteframe-z2 login-box" ng-hide="vm.loggedIn">
+     <h3>Please Input Credentials Below</h3>
+     <md-input-container md-no-float>
+      <ng-md-icon icon="account_circle"></ng-md-icon>
+      <input ng-model="vm.name" type="text" placeholder="Username">
+    </md-input-container>
+    <md-input-container md-no-float>
+      <ng-md-icon icon="lock_outline"></ng-md-icon>
+      <input ng-model="vm.password" type="password" placeholder="Password">
+    </md-input-container>
+   <md-button ng-click="vm.login()">Login</md-button>
+</div>

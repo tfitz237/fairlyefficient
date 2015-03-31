@@ -2,10 +2,7 @@
      'use strict';
      
      angular
-          .module('app.posts', [
-               
-               
-               ]);
+          .module('app.posts', ['app.core']);
      
      
 })();
